@@ -1,11 +1,11 @@
 const fetch = require('node-fetch')
 const config = require('./config')
 
-async function fetchRestaurants (totalCount) {
+async function fetchRestaurants () {
   let result = []
   let offset = 0
   let limit = 30
-  while (offset < totalCount) {
+  while (offset < config.queryLimit) {
     let url = config.url + `&offset=${offset}&limit=${limit}`
     let data = await fetch(url, {
       'credentials': 'include',

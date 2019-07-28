@@ -1,15 +1,10 @@
 const Discount = require('./discount')
+const { redPackets } = require('./config')
 
 function sortAndMap (restaurants) {
   return restaurants.map(e => ({ name: e.name, minCost: findMostOptimal(e) }))
     .sort((o1, o2) => o1.minCost.cost - o2.minCost.cost)
 }
-
-let redPackets = [
-  new Discount(30, 8),
-  new Discount(32, 10),
-  new Discount(50, 15)
-]
 
 function findMostOptimal (item) {
   let minCost = Number.MAX_VALUE
