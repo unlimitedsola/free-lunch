@@ -1,11 +1,8 @@
 const Discount = require('./discount')
 
 function sortAndMap (restaurants) {
-  restaurants.forEach(item => {
-    item.minCost = findMostOptimal(item)
-  })
-  restaurants.sort((o1, o2) => o1.minCost.cost - o2.minCost.cost)
-  return restaurants.map(e => ({ name: e.name, minCost: e.minCost }))
+  return restaurants.map(e => ({ name: e.name, minCost: findMostOptimal(e) }))
+    .sort((o1, o2) => o1.minCost.cost - o2.minCost.cost)
 }
 
 let redPackets = [
